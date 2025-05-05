@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Whisper&display=swap');
+:root {
+    --bg-light: #f5f5f5;
+    --text-light: #222;
+    --form-light: #fff;
+
+    --bg-dark: #1e1e2f;
+    --text-dark: #eee;
+    --form-dark: #2e2e3e;
+
+    --primary: #00bcd4;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+#theme-toggle {
+    display: none;
+}
+
+main:has(#theme-toggle:checked) {
+    --bg: var(--bg-dark);
+    --text: var(--text-dark);
+    --form: var(--form-dark);
+}
+
+main {
+    --bg: var(--bg-light);
+    --text: var(--text-light);
+    --form: var(--form-light);
+
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    transition: all 0.3s ease;
+}
+
+.toggle-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.toggle-label {
+    cursor: pointer;
+    background: #ccc;
+    border-radius: 20px;
+    width: 50px;
+    height: 24px;
+    position: relative;
+    display: inline-block;
+}
+
+.toggle-label::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle:checked + .toggle-label::after {
+    transform: translateX(26px);
+}
+
+#theme-toggle:checked + .toggle-label {
+    background: #4caf50;
+}
+
+.form-container {
+    background-color: var(--form);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="tel"],input[type="email"],
+textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+main:has(#theme-toggle:checked) input,
+main:has(#theme-toggle:checked) textarea,
+main:has(#theme-toggle:checked) select {
+    background-color: #3a3a4d;
+    color: white;
+    border: 1px solid #555;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.gender-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+}
